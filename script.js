@@ -46,6 +46,9 @@ function setTime() {
   const seconds = time.getSeconds();
   const ampm = hours >= 12 ? 'PM' : 'AM';
 
+  console.log(hours);
+  console.log(hoursForClock);
+
   needleHour.style.transition = `${hours === 0 ? 'none' : 'all 0.5s ease-in'}`;
 
   needleMinute.style.transition = `${
@@ -80,7 +83,7 @@ function setTime() {
     360
   )}deg)`;
 
-  timeEl.innerHTML = `${hoursForClock}:${
+  timeEl.innerHTML = `${hoursForClock === 0 ? 12 : hoursForClock}:${
     minutes >= 10 ? minutes : '0' + minutes
   } ${ampm}`;
 
