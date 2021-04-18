@@ -4,6 +4,9 @@ const secondEl = document.querySelector('.second');
 const timeEl = document.querySelector('.time');
 const dateEl = document.querySelector('.date');
 const toggleEl = document.querySelector('.toggle');
+const needleSecond = document.querySelector('.needle.second');
+const needleMinute = document.querySelector('.needle.minute');
+const needleHour = document.querySelector('.needle.hour');
 
 const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const months = [
@@ -42,6 +45,16 @@ function setTime() {
   const minutes = time.getMinutes();
   const seconds = time.getSeconds();
   const ampm = hours >= 12 ? 'PM' : 'AM';
+
+  needleHour.style.transition = `${hours === 0 ? 'none' : 'all 0.5s ease-in'}`;
+
+  needleMinute.style.transition = `${
+    minutes === 0 ? 'none' : 'all 0.5s ease-in'
+  }`;
+
+  needleSecond.style.transition = `${
+    seconds === 0 ? 'none' : 'all 0.5s ease-in'
+  }`;
 
   hourEl.style.transform = `translate(-50%, -100%) rotate(${scale(
     hoursForClock,
